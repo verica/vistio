@@ -73,7 +73,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:nmnellis/vistio.git"
+    "url": "git@github.com:verica/vistio.git"
   },
   "pre-commit": [
     "lint",

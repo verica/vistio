@@ -21,7 +21,7 @@ services:
       - ./vistio.yaml:/etc/vistio/vistio.yaml
   vistio-web:
     container_name: vistio-web
-    image: nmnellis/vistio-web:v0.1.0
+    image: adambair/vistio-web:v0.0.2
     ports:
       - 8080:8080
     environment:

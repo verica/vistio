@@ -12,7 +12,7 @@ This fork of Netflix's [vizceral-example](https://github.com/Netflix/vizceral-ex
 
 # Install
 This application is one of promviz's components.  
-To install, please refer to [nmnellis/vistio/web#install](https://github.com/nmnellis/vistio/web#install).  
+To install, please refer to [verica/vistio/web#install](https://github.com/verica/vistio/web#install).  
 
 # Install & Run Independently
 ```
@@ -27,7 +27,7 @@ docker run -p 8080:8080 -d <name>/vistio
 then, you can view the top page at http://localhost:8080/
 
 ### Public Docker Repository
-[nmnellis/vistio-web](https://hub.docker.com/r/nmnellis/vistio-web/)
+[verica/vistio-web](https://hub.docker.com/r/verica/vistio-web/)
 
 # Configuration
 There are 2 ways to configure this application:  

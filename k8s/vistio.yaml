@@ -46,7 +46,42 @@ data:
           replacement: istio-mesh
       maxVolume: 100
     graphName: Vistio
-    
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vistio-url
+  labels:
+    heritage: Tiller
+    chart: "vistio-0.1.0"
+    app: vistio-url
+    release: vistio
+spec:
+  type: LoadBalancer
+  selector:
+    app: vistio-web
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vistio-api-url
+  labels:
+    heritage: Tiller
+    chart: "vistio-0.1.0"
+    app: vistio-api
+    release: vistio
+spec:
+  type: LoadBalancer
+  selector:
+    app: vistio-api
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 9091
 ---
 # Source: vistio/templates/service.yaml
 apiVersion: v1
@@ -110,21 +145,19 @@ spec:
     spec:
       containers:
         - name: vistio
-          image: "adambair/vistio-web:v0.0.2"
+          image: adambair/vistio-web:v0.0.2
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
             - name: UPDATE_URL
-              value: http://localhost:9091/graph
+              value: http://a33c49f2357dd11e991c40aff431c0bb-1518927898.us-east-1.elb.amazonaws.com/graph
             - name: INTERVAL
               value: "1000"
             - name: MAX_REPLAY_OFFSET
               value: "43200"
           resources:
             {}
-            
-
 ---
 # Source: vistio/templates/statefulset.yaml
 apiVersion: apps/v1beta1
@@ -185,7 +218,7 @@ spec:
           image: nghialv2607/k8s-config-reloader:v0.1.0
           imagePullPolicy: IfNotPresent
           args:
-            - --config.promviz-reload-url=http://localhost:9091/reload
+            - --config.promviz-reload-url=http://a33c49f2357dd11e991c40aff431c0bb-1518927898.us-east-1.elb.amazonaws.com/reload
             - --config.promviz-config-dir=/etc/vistio
             - --config.log-level=info
           resources:

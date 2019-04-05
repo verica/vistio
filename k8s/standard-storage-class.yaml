@@ -1,0 +1,13 @@
+---
+# found here: https://kubernetes.io/docs/concepts/storage/storage-classes/#the-storageclass-resource
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: standard
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2
+reclaimPolicy: Retain
+mountOptions:
+  - debug
+volumeBindingMode: Immediate

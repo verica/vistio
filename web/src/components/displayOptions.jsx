@@ -6,7 +6,7 @@ class DisplayOptions extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      allowDraggingOfNodes: false,
+      allowDraggingOfNodes: true,
       showLabels: true
     };
   }

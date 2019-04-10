@@ -57,7 +57,7 @@ class TrafficFlow extends React.Component {
       redirectedFrom: undefined,
       selectedChart: undefined,
       displayOptions: {
-        allowDraggingOfNodes: false,
+        allowDraggingOfNodes: true,
         showLabels: true
       },
       currentGraph_physicsOptions: {
